@@ -4,7 +4,7 @@ from collections import defaultdict
 
 class HealthBookInferenceEngine:
 
-        def __init__(self, q_path, d_path, k_path):
+    def __init__(self, q_path, d_path, k_path):
         # 質問データ読み込み
         q_data = self._load_json(q_path)
         if isinstance(q_data, dict) and "questions" in q_data:
@@ -26,8 +26,8 @@ class HealthBookInferenceEngine:
         self.kampo_dict = {k["id"]: k for k in self.KL}
 
     def _load_json(self, path):
-    　with open(path, "r", encoding="utf-8-sig") as f:
-        return json.load(f)
+        with open(path, "r", encoding="utf-8-sig") as f:
+           return json.load(f)
 
     # -----------------------------
     # ① RF抽出（rf / risk_factors両対応）
