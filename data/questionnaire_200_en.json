@@ -1,5 +1,4 @@
-[
-　{
+{
   "version": "1.0",
   "total_questions": 200,
   "categories": {
@@ -1809,4 +1808,4 @@
       "related_diseases": ["lifestyle_related_diseases"],
       "weight": 1.00
     } 
-　]
+} 
