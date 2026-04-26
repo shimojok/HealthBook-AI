@@ -26,8 +26,8 @@ class HealthBookInferenceEngine:
         self.kampo_dict = {k["id"]: k for k in self.KL}
 
     def _load_json(self, path):
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
+    　with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
 
     # -----------------------------
     # ① RF抽出（rf / risk_factors両対応）
