@@ -17,7 +17,7 @@ from src.fhir_exporter import FHIRExporter  # 既存想定
 @st.cache_resource
 def load_engine():
     return HealthBookInferenceEngine(
-        "data/questionnaire_200_jp.new.json",
+        "data/questionnaire_200_jp.json",
         "data/disease_matrix_137.json",
         "data/kampo_metabolic_library.json"
     )
@@ -31,7 +31,7 @@ cascade = CascadeConnector()
 # -----------------------------
 lang = st.sidebar.selectbox("Language / 言語", ["JP", "EN"])
 
-q_file = "data/questionnaire_200_jp.new.json" if lang == "JP" else "data/questionnaire_200_en.new.json"
+q_file = "data/questionnaire_200_jp.json" if lang == "JP" else "data/questionnaire_200_en.json"
 
 with open(q_file, "r", encoding="utf-8") as f:
     Q = json.load(f)["questions"]
