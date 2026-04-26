@@ -22,12 +22,12 @@ class HealthBookInferenceEngine:
         # 漢方ライブラリ読み込み
         k_data = self._load_json(k_path)
         self.KL = k_data if isinstance(k_data, list) else k_data.get("kampo_formulas", [])
-        
+
         self.kampo_dict = {k["id"]: k for k in self.KL}
 
     def _load_json(self, path):
         with open(path, "r", encoding="utf-8-sig") as f:
-           return json.load(f)
+            return json.load(f)
 
     # -----------------------------
     # ① RF抽出（rf / risk_factors両対応）
@@ -46,7 +46,6 @@ class HealthBookInferenceEngine:
             weight = q.get("weight", 1.0)
             multiplier = 1.0 if ans == 2 else 0.5
 
-            # ✅ Critical Fix 2
             rf_list = q.get("risk_factors") or q.get("rf") or []
 
             for rf in rf_list:
