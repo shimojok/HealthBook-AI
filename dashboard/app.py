@@ -5,29 +5,26 @@ import os
 from pathlib import Path
 
 # --- ★パス設定（最重要修正） ---
-# 現在のファイルの場所を基準に、リポジトリのルートを取得
 BASE_DIR = Path(__file__).resolve().parent.parent
-# dataディレクトリとsrcディレクトリをシステムパスに追加
 sys.path.append(str(BASE_DIR / "src"))
 DATA_DIR = BASE_DIR / "data"
 
 # --- デバッグ用：ファイル存在確認 ---
-# Streamlitの画面にデバッグ情報を表示（デプロイ後、問題なければ削除してOK）
 st.write("Base Dir:", BASE_DIR)
 st.write("Data Dir:", DATA_DIR)
 st.write("Files in data:", os.listdir(DATA_DIR))
 
-from src.inference_engine import HealthBookInferenceEngine
-from src.metabolite_mapper import MetaboliteMapper
-from src.cascade_connector import CascadeConnector
-from src.fhir_exporter import FHIRExporter
+# ★ "src." を除去（sys.path に src を追加済みのため不要）
+from inference_engine import HealthBookInferenceEngine
+from metabolite_mapper import MetaboliteMapper
+from cascade_connector import CascadeConnector
+from fhir_exporter import FHIRExporter
 
 # -----------------------------
 # 初期化
 # -----------------------------
 @st.cache_resource
 def load_engine():
-    # ★フルパスで指定
     return HealthBookInferenceEngine(
         str(DATA_DIR / "questionnaire_200_jp.json"),
         str(DATA_DIR / "disease_matrix_137.json"),
@@ -43,10 +40,10 @@ cascade = CascadeConnector()
 # -----------------------------
 lang = st.sidebar.selectbox("Language / 言語", ["JP", "EN"])
 
-# ★言語ファイルもフルパスで指定
 q_file = DATA_DIR / ("questionnaire_200_jp.json" if lang == "JP" else "questionnaire_200_en.json")
 
-with open(q_file, "r", encoding="utf-8") as f:
+# ★ utf-8-sig に統一（inference_engine と合わせる）
+with open(q_file, "r", encoding="utf-8-sig") as f:
     Q = json.load(f)["questions"]
 
 # -----------------------------
@@ -98,11 +95,7 @@ if st.button("Analyze / 分析実行"):
     # ① 疾病
     with tabs[0]:
         for d in result["disease_ranking"]:
-
-            highlight = (
-                d["disease_id"] in ["D002", "D012"]
-            )
-
+            highlight = (d["disease_id"] in ["D002", "D012"])
             st.write(
                 f"{'🔴' if highlight else ''} "
                 f"{d['disease_name']} : {round(d['score'],2)}"
