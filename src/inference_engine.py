@@ -4,11 +4,25 @@ from collections import defaultdict
 
 class HealthBookInferenceEngine:
 
-    def __init__(self, q_path, d_path, k_path):
-        self.Q = self._load_json(q_path)["questions"]
-        self.DM = self._load_json(d_path)["disease_matrix"]
-        self.KL = self._load_json(k_path)
+        def __init__(self, q_path, d_path, k_path):
+        # 質問データ読み込み
+        q_data = self._load_json(q_path)
+        if isinstance(q_data, dict) and "questions" in q_data:
+            self.Q = q_data["questions"]
+        else:
+            self.Q = q_data
 
+        # 疾病データ読み込み
+        d_data = self._load_json(d_path)
+        if isinstance(d_data, dict) and "disease_matrix" in d_data:
+            self.DM = d_data["disease_matrix"]
+        else:
+            self.DM = d_data
+
+        # 漢方ライブラリ読み込み
+        k_data = self._load_json(k_path)
+        self.KL = k_data if isinstance(k_data, list) else k_data.get("kampo_formulas", [])
+        
         self.kampo_dict = {k["id"]: k for k in self.KL}
 
     def _load_json(self, path):
