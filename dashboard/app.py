@@ -115,7 +115,7 @@ if st.button("Analyze / 分析実行"):
     with tabs[3]:
         st.json(metabolites)
         # 鹿茸セクション
-         with st.expander("🦌 動物生薬プロファイル：鹿茸（Cervus nippon）"):
+        with st.expander("🦌 動物生薬プロファイル：鹿茸（Cervus nippon）"):
             st.markdown("""
             ### MBT55 × 鹿茸 代謝変換カスケード
                         
