@@ -114,10 +114,10 @@ if st.button("Analyze / 分析実行"):
     # ④ 代謝
     with tabs[3]:
         st.json(metabolites)
-                            # 鹿茸セクション
-                    with st.expander("🦌 動物生薬プロファイル：鹿茸（Cervus nippon）"):
-                        st.markdown("""
-                        ### MBT55 × 鹿茸 代謝変換カスケード
+        # 鹿茸セクション
+         with st.expander("🦌 動物生薬プロファイル：鹿茸（Cervus nippon）"):
+            st.markdown("""
+            ### MBT55 × 鹿茸 代謝変換カスケード
                         
                         | 成分群 | MBT55（タテヤマ女汝）による変換 | 予測される活性物質 |
                         |:---|:---|:---|
