@@ -1,0 +1,8 @@
+[
+  {
+    "substrate": "Inulin",
+    "microbial_cluster": "MBT_FER_01",
+    "final_metabolite": "Butyrate",
+    "target_pathway": "PATH_05"
+  }
+]
