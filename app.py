@@ -5,30 +5,10 @@ from phenotype.phenotype_engine import (
     PhenotypeEngine
 )
 
-from recommendation.recommendation_engine import (
-    RecommendationEngine
-)
-
-from api.disease_engine_api import (
-    infer_disease
-)
-
-from api.strain_api import (
-    recommend_strains
-)
-
-from api.metabolic_graph_engine_api import (
-    get_path
-)
-
-
-phenotype_engine = PhenotypeEngine(
-    "phenotype/questionnaire_pathway_matrix.json"
-)
-
-recommendation_engine = RecommendationEngine(
-    "recommendation/pathway_food_map.json"
-)
+# 一旦停止
+# from recommendation.recommendation_engine import (
+#     RecommendationEngine
+# )
 
 
 st.set_page_config(
@@ -43,6 +23,16 @@ HealthBook is an Ecological Metabolic OS
 that models how microbial ecosystems transform
 organic matter into human metabolic outcomes.
 """)
+
+
+phenotype_engine = PhenotypeEngine(
+    "phenotype/questionnaire_pathway_matrix.json"
+)
+
+# 一旦停止
+# recommendation_engine = RecommendationEngine(
+#     "recommendation/pathway_food_map.json"
+# )
 
 
 st.header("Questionnaire Input")
@@ -111,81 +101,3 @@ if st.button("Analyze"):
         st.markdown(f"""
         - {pathway}: {score}
         """)
-
-    disease_results = infer_disease(scores)
-
-    st.header("TOP DISEASE RISKS")
-
-    for item in disease_results:
-
-        st.markdown(f"""
-        - {item['disease']}
-          : {item['risk_score']}
-        """)
-
-    low_pathways = []
-
-    for key, value in scores.items():
-
-        if value < 0.5:
-
-            low_pathways.append(key)
-
-    recommendations = recommendation_engine.recommend(
-        low_pathways
-    )
-
-    st.header("RECOMMENDED SUBSTRATES")
-
-    for item in recommendations:
-
-        st.markdown(f"""
-        ## {item['pathway']}
-
-        {", ".join(item['foods'])}
-        """)
-
-    strain_results = recommend_strains(
-        low_pathways
-    )
-
-    st.header("MBT55 STRAIN RECOMMENDATIONS")
-
-    for item in strain_results:
-
-        st.markdown(f"""
-        ### {item['strain']}
-
-        - Cluster: {item['cluster']}
-        - Pathways: {", ".join(item['matched_pathways'])}
-        - Metabolites: {", ".join(item['metabolites'])}
-        """)
-
-    st.header("METABOLIC PATH TRACE")
-
-    source = st.text_input(
-        "Source Compound",
-        "Puerarin"
-    )
-
-    target = st.text_input(
-        "Target Metabolite",
-        "Equol"
-    )
-
-    path = get_path(
-        source,
-        target
-    )
-
-    if path:
-
-        st.success(
-            " → ".join(path)
-        )
-
-    else:
-
-        st.warning(
-            "No pathway found"
-        )
