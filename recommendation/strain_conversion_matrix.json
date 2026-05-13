@@ -1,13 +1,43 @@
 {
+  "MBT_HYD_01": {
+    "functions": [
+      "proteolysis",
+      "cellulolysis"
+    ],
+    "target_pathways": [
+      "PATH_00"
+    ]
+  },
+  "MBT_ACT_01": {
+    "functions": [
+      "deglycosylation"
+    ],
+    "target_pathways": [
+      "PATH_01"
+    ]
+  },
+  "MBT_RED_01": {
+    "functions": [
+      "reduction"
+    ],
+    "target_pathways": [
+      "PATH_02"
+    ]
+  },
   "MBT_FER_01": {
     "functions": [
       "SCFA_production"
     ],
-    "substrates": [
-      "Inulin"
+    "target_pathways": [
+      "PATH_05"
+    ]
+  },
+  "MBT_PEP_01": {
+    "functions": [
+      "bioactive_peptide_generation"
     ],
-    "generated_metabolites": [
-      "Butyrate"
+    "target_pathways": [
+      "PATH_06"
     ]
   }
 }
