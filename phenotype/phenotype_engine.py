@@ -22,7 +22,12 @@ class PhenotypeEngine:
             if question_id not in self.matrix:
                 continue
 
-            pathway_weights = self.matrix[question_id]
+            question_data = self.matrix[question_id]
+
+            if "weights" not in question_data:
+                continue
+
+            pathway_weights = question_data["weights"]
 
             for pathway, weight in pathway_weights.items():
 
@@ -30,7 +35,7 @@ class PhenotypeEngine:
                     scores[pathway] = 0.5
 
                 scores[pathway] += (
-                    answer_value * weight
+                    float(answer_value) * float(weight)
                 )
 
         for pathway in scores:
