@@ -1,1 +1,10 @@
-
+{
+  "PATH_00": {
+    "name": "Hydrolysis",
+    "functions": [
+      "proteolysis",
+      "cellulolysis",
+      "lipolysis"
+    ]
+  }
+}
