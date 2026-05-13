@@ -1,0 +1,13 @@
+{
+  "MBT_FER_01": {
+    "functions": [
+      "SCFA_production"
+    ],
+    "substrates": [
+      "Inulin"
+    ],
+    "generated_metabolites": [
+      "Butyrate"
+    ]
+  }
+}
