@@ -5,11 +5,6 @@ from phenotype.phenotype_engine import (
     PhenotypeEngine
 )
 
-# 一旦停止
-# from recommendation.recommendation_engine import (
-#     RecommendationEngine
-# )
-
 
 st.set_page_config(
     page_title="HealthBook Metabolic OS",
@@ -28,11 +23,6 @@ organic matter into human metabolic outcomes.
 phenotype_engine = PhenotypeEngine(
     "phenotype/questionnaire_pathway_matrix.json"
 )
-
-# 一旦停止
-# recommendation_engine = RecommendationEngine(
-#     "recommendation/pathway_food_map.json"
-# )
 
 
 st.header("Questionnaire Input")
