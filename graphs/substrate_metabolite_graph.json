@@ -3,6 +3,35 @@
     "substrate": "Inulin",
     "microbial_cluster": "MBT_FER_01",
     "final_metabolite": "Butyrate",
-    "target_pathway": "PATH_05"
+    "target_pathway": "PATH_05",
+    "human_effect": "Gut barrier recovery"
+  },
+  {
+    "substrate": "Puerarin",
+    "microbial_cluster": "MBT_ACT_01",
+    "final_metabolite": "Equol",
+    "target_pathway": "PATH_01",
+    "human_effect": "Circulation improvement"
+  },
+  {
+    "substrate": "Berberine",
+    "microbial_cluster": "MBT_RED_01",
+    "final_metabolite": "Dihydroberberine",
+    "target_pathway": "PATH_02",
+    "human_effect": "Anti-inflammatory"
+  },
+  {
+    "substrate": "Deer Antler",
+    "microbial_cluster": "MBT_PEP_01",
+    "final_metabolite": "Bioactive Peptide",
+    "target_pathway": "PATH_06",
+    "human_effect": "Regenerative support"
+  },
+  {
+    "substrate": "Earthworm",
+    "microbial_cluster": "MBT_PEP_01",
+    "final_metabolite": "Fibrinolytic Peptide",
+    "target_pathway": "PATH_06",
+    "human_effect": "Circulatory support"
   }
 ]
