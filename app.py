@@ -32,11 +32,11 @@ phenotype_engine = PhenotypeEngine(
 st.header("Questionnaire Input")
 
 questions = {
-    "Q1": "Do you skip breakfast?",
-    "Q2": "Do you feel chronic fatigue?",
-    "Q3": "Do you have constipation?",
-    "Q4": "Do you have sleep problems?",
-    "Q5": "Do you consume fermented foods?"
+    "Q001": "Do you skip breakfast frequently?",
+    "Q002": "Do you suffer from constipation?",
+    "Q003": "Do you experience bloating after meals?",
+    "Q004": "Do you have sleep disturbances?",
+    "Q005": "Do you often feel fatigue?"
 }
 
 answers = {}
@@ -56,6 +56,14 @@ if st.button("Analyze"):
     scores = phenotype_engine.calculate_scores(
         answers
     )
+
+    if len(scores) == 0:
+
+        st.error(
+            "No pathway scores generated"
+        )
+
+        st.stop()
 
     st.header("PATHWAY SCORES")
 
@@ -102,9 +110,17 @@ if st.button("Analyze"):
         scores
     )
 
-    for item in disease_results:
+    if len(disease_results) == 0:
 
-        st.markdown(f"""
-        - {item['disease']}
-          : {item['risk_score']}
-        """)
+        st.success(
+            "No major disease risks detected"
+        )
+
+    else:
+
+        for item in disease_results:
+
+            st.markdown(f"""
+            - {item['disease']}
+              : {item['risk_score']}
+            """)
