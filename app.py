@@ -5,6 +5,10 @@ from phenotype.phenotype_engine import (
     PhenotypeEngine
 )
 
+from api.disease_engine_api import (
+    infer_disease
+)
+
 
 st.set_page_config(
     page_title="HealthBook Metabolic OS",
@@ -90,4 +94,17 @@ if st.button("Analyze"):
 
         st.markdown(f"""
         - {pathway}: {score}
+        """)
+
+    st.header("DISEASE RISKS")
+
+    disease_results = infer_disease(
+        scores
+    )
+
+    for item in disease_results:
+
+        st.markdown(f"""
+        - {item['disease']}
+          : {item['risk_score']}
         """)
