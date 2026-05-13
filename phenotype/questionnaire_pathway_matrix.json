@@ -1,11 +1,33 @@
 {
   "Q001": {
-    "PATH_05": -0.4
+    "question": "Do you skip breakfast frequently?",
+    "weights": {
+      "PATH_05": -0.4,
+      "PATH_03": -0.2
+    }
   },
-  "Q015": {
-    "PATH_04": -0.3
+  "Q002": {
+    "question": "Do you suffer from constipation?",
+    "weights": {
+      "PATH_05": -0.6
+    }
   },
-  "Q022": {
-    "PATH_00": -0.5
+  "Q003": {
+    "question": "Do you experience bloating after meals?",
+    "weights": {
+      "PATH_00": -0.5
+    }
+  },
+  "Q004": {
+    "question": "Do you have sleep disturbances?",
+    "weights": {
+      "PATH_04": -0.5
+    }
+  },
+  "Q005": {
+    "question": "Do you often feel fatigue?",
+    "weights": {
+      "PATH_02": -0.4
+    }
   }
 }
