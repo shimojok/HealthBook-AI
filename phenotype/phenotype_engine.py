@@ -1,49 +1,32 @@
 import json
 
+PATHWAYS = [
+    "PATH_00",
+    "PATH_01",
+    "PATH_02",
+    "PATH_03",
+    "PATH_04",
+    "PATH_05",
+    "PATH_06"
+]
 
-class PhenotypeEngine:
+def calculate_pathway_scores(answers, matrix_file):
+    with open(matrix_file, "r", encoding="utf-8") as f:
+        matrix = json.load(f)
 
-    def __init__(self, matrix_path):
+    scores = {p: 0.0 for p in PATHWAYS}
 
-        with open(
-            matrix_path,
-            "r",
-            encoding="utf-8"
-        ) as f:
+    for qid, answer_value in answers.items():
+        if qid not in matrix:
+            continue
 
-            self.matrix = json.load(f)
+        weights = matrix[qid]["weights"]
 
-    def calculate_scores(self, answers):
+        for pathway, weight in weights.items():
+            scores[pathway] += answer_value * weight
 
-        scores = {}
+    normalized = {}
+    for pathway, value in scores.items():
+        normalized[pathway] = round(max(0, min(1, 0.5 + value)), 2)
 
-        for question_id, answer_value in answers.items():
-
-            if question_id not in self.matrix:
-                continue
-
-            pathway_weights = self.matrix[question_id]
-
-            for pathway, weight in pathway_weights.items():
-
-                if pathway not in scores:
-                    scores[pathway] = 0.5
-
-                scores[pathway] += (
-                    answer_value * weight
-                )
-
-        for pathway in scores:
-
-            if scores[pathway] < 0:
-                scores[pathway] = 0.0
-
-            if scores[pathway] > 1:
-                scores[pathway] = 1.0
-
-            scores[pathway] = round(
-                scores[pathway],
-                2
-            )
-
-        return scores
+    return normalized
