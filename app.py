@@ -1,6 +1,8 @@
 import streamlit as st
 
-from phenotype.phenotype_engine import PhenotypeEngine
+from phenotype.phenotype_engine import (
+    PhenotypeEngine
+)
 from recommendation.recommendation_engine import RecommendationEngine
 
 
