@@ -1,10 +1,64 @@
 {
   "PATH_00": {
     "name": "Hydrolysis",
+    "description": "Macromolecule decomposition",
     "functions": [
       "proteolysis",
       "cellulolysis",
-      "lipolysis"
+      "lipolysis",
+      "amylolysis"
+    ],
+    "major_metabolites": [
+      "amino_acids",
+      "oligosaccharides",
+      "fatty_acids"
+    ]
+  },
+  "PATH_01": {
+    "name": "Polyphenol Activation",
+    "description": "Deglycosylation and activation of phytochemicals",
+    "functions": [
+      "deglycosylation",
+      "polyphenol_conversion"
+    ]
+  },
+  "PATH_02": {
+    "name": "Redox",
+    "description": "Electron transfer and reduction metabolism",
+    "functions": [
+      "reduction",
+      "electron_transfer"
+    ]
+  },
+  "PATH_03": {
+    "name": "Lipid Signaling",
+    "description": "Fatty acid and lipid mediator metabolism",
+    "functions": [
+      "lipid_conversion"
+    ]
+  },
+  "PATH_04": {
+    "name": "Neuroactive",
+    "description": "Neurotransmitter-related metabolism",
+    "functions": [
+      "indole_production",
+      "GABA_production"
+    ]
+  },
+  "PATH_05": {
+    "name": "Fermentation",
+    "description": "SCFA and fermentation metabolism",
+    "functions": [
+      "SCFA_production",
+      "butyrate_synthesis"
+    ]
+  },
+  "PATH_06": {
+    "name": "Bioactive Peptide",
+    "description": "Bioactive peptide generation from animal substrates",
+    "functions": [
+      "collagen_peptide_generation",
+      "fibrinolytic_peptide_generation"
     ]
   }
 }
